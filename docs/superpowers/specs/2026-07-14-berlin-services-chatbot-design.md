@@ -60,9 +60,22 @@ Phase 2, rather than over-building before anything is measurable.
       "office": "Bürgeramt",
       "url": "https://service.berlin.de/..."
     },
-    "sourceUrl": "https://service.berlin.de/dienstleistung/..."
+    "sourceUrl": "https://service.berlin.de/dienstleistung/...",
+    "clarifyingQuestions": [
+      {
+        "question": "Which country issued your current driving license?",
+        "why": "EU/EEA licenses convert without a test; most non-EU/EEA licenses require a driving test unless the issuing country has a bilateral agreement with Germany. This changes which documents and fees apply."
+      }
+    ]
   }
   ```
+
+  `clarifyingQuestions` is optional — most curated services (e.g. Anmeldung) won't need it.
+  It's used for services whose actual requirements branch depending on a fact about the user
+  (e.g. driving license conversion, which differs by country of origin). `eligibility`,
+  `requiredDocuments`, and `fees` may contain conditional text (e.g. "If EU/EEA: ... If
+  non-EU/EEA: ...") to capture these branches; the model resolves which branch applies using
+  the clarifying answer before presenting the checklist.
 
 - **Agent tools** (defined via the AI SDK's `tool()`):
   - `search_services(query)` — fuzzy/keyword match (e.g. Fuse.js) over `name`,
@@ -82,11 +95,21 @@ Phase 2, rather than over-building before anything is measurable.
    one-line reason it matches), asking the user to confirm or narrow down if the request was
    ambiguous.
 3. User picks one (by clicking a suggested option or typing).
-4. Model calls `get_service_details` and renders a structured "get ready" checklist:
-   required documents, eligibility, fees, processing time, and how/where to book — plus a
-   link back to the authoritative berlin.de page.
-5. The user can continue the conversation (follow-up questions, or start over for a
+4. Model calls `get_service_details`. If the returned record has `clarifyingQuestions` and
+   the conversation so far doesn't already answer them, the model asks before presenting
+   anything further — e.g. for "convert my driving license," it asks which country issued
+   the user's current license, since that determines the process entirely.
+5. Once resolved, the model renders a structured "get ready" checklist for the correct
+   branch of the service: required documents, eligibility, fees, processing time, and
+   how/where to book — plus a link back to the authoritative berlin.de page.
+6. The user can continue the conversation (follow-up questions, or start over for a
    different need).
+
+**Governing rule:** before presenting a service recommendation *or* a "get ready" checklist,
+the model must check whether it actually has enough information to be accurate for this
+specific user. If not — whether because multiple services could apply, or because the
+chosen service's requirements branch on a fact it doesn't have — it asks a clarifying
+question rather than presenting something generic or guessed.
 
 ## UI
 
@@ -105,8 +128,10 @@ Phase 2, rather than over-building before anything is measurable.
 - **No relevant match:** if `search_services` returns nothing relevant, the model says so
   plainly and suggests browsing the full service list on berlin.de (with a link), rather
   than guessing or inventing a service.
-- **Ambiguous request:** if a request could plausibly match multiple unrelated services, the
-  model asks a clarifying question instead of picking one arbitrarily.
+- **Ambiguous or underspecified request:** if a request could plausibly match multiple
+  unrelated services, *or* it maps clearly to one service whose requirements branch on a
+  fact the model doesn't have (per that service's `clarifyingQuestions`), the model asks a
+  clarifying question instead of picking one arbitrarily or presenting a generic answer.
 - **No hallucinated details:** the system prompt explicitly instructs the model to state
   only what is present in tool results (documents, fees, eligibility, etc.), and to respond
   with "I don't have that detail — check the official page" for anything not covered by the
@@ -121,6 +146,9 @@ verification is manual: a short written test script of ~10 representative querie
 - A clear, unambiguous match ("I need a new passport").
 - An ambiguous request that could map to multiple services.
 - A request with no good match in the curated set.
+- A request that identifies a service but is missing a fact needed to give accurate
+  guidance (e.g. "convert my driving license" without stating the issuing country) —
+  confirm the model asks rather than guessing.
 - Follow-up questions after a service is selected (e.g. "what if I don't have X document?").
 
 Run by hand in the browser before calling v1 "done."
