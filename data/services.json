@@ -20,5 +20,286 @@
       "url": "https://service.berlin.de/dienstleistung/120697/"
     },
     "sourceUrl": "https://service.berlin.de/dienstleistung/120697/"
+  },
+  {
+    "id": "personalausweis",
+    "name": "Personalausweis beantragen (Applying for a German ID card)",
+    "description": "Apply for a German national identity card (Personalausweis), the standard proof-of-identity document for German citizens aged 16 and up.",
+    "keywords": ["id card", "personalausweis", "identity card", "national id", "apply for id", "renew id"],
+    "eligibility": "German citizens aged 16 and older with a registered address in Berlin (a secondary residence is accepted for a valid reason, with an extra fee). Children under 16 may apply with parental/guardian consent. Non-Berlin residents, tourists, and Germans living abroad can apply through the State Office for Citizen and Order Affairs.",
+    "requiredDocuments": [
+      "Current digital biometric passport photo",
+      "Previous ID document, if available (even if expired)",
+      "Valid passport, if you have one",
+      "Birth certificate or marriage/civil partnership certificate, if you have never had an ID or your name differs from the civil registry",
+      "For newly naturalized citizens: your previous nationality's passport/ID and your naturalization certificate",
+      "For minors: written parental/guardian consent, plus a copy of the non-present parent's ID"
+    ],
+    "fees": "€27.60 for applicants under 24; €46.00 for applicants 24 and older. A secondary-residence surcharge (€13.00), in-office photo (€6.00), and direct mail delivery (€15.00) can apply on top of that.",
+    "processingTime": "Around 3 to 4 weeks under normal circumstances; individual cases can take longer. An emergency provisional ID can be requested if needed sooner.",
+    "bookingInfo": {
+      "office": "Bürgeramt (any district citizens' office)",
+      "url": "https://service.berlin.de/dienstleistung/120703/"
+    },
+    "sourceUrl": "https://service.berlin.de/dienstleistung/120703/"
+  },
+  {
+    "id": "reisepass",
+    "name": "Reisepass beantragen (Applying for a German passport)",
+    "description": "Apply for a German passport (Reisepass), the travel document required for international trips outside the EU/Schengen area.",
+    "keywords": ["passport", "reisepass", "apply for passport", "renew passport", "travel document"],
+    "eligibility": "German citizens registered in Berlin. Personal appearance is mandatory for all applicants, including minors; for applicants under 18, a legal guardian must submit the application together with the child. Unregistered persons, tourists, and Germans living abroad can apply through separate channels.",
+    "requiredDocuments": [
+      "Current digital biometric passport photo",
+      "Previous passport or ID document, if available",
+      "Valid identity document (e.g. personal ID card)",
+      "Birth, marriage, or partnership certificate, if you've never held these documents before or your personal data differs from the registry",
+      "For minors: parental consent form and a copy of the absent parent's ID, if only one parent attends",
+      "For naturalized citizens: previous passport/ID or identification certificate, plus the naturalization certificate"
+    ],
+    "fees": "€37.50 for applicants under 24; €70.00 for applicants 24 and older (doubled if Berlin is not your primary residence). Express processing costs an extra €32.00, a 48-page passport an extra €22.00, an in-office photo €6.00, and direct mail delivery €15.00.",
+    "processingTime": "Up to 8 weeks under the standard process; express service can take as little as 4 business days if the application is submitted before 11 a.m.",
+    "bookingInfo": {
+      "office": "Bürgeramt (any district citizens' office)",
+      "url": "https://service.berlin.de/dienstleistung/121151/"
+    },
+    "sourceUrl": "https://service.berlin.de/dienstleistung/121151/"
+  },
+  {
+    "id": "fuehrungszeugnis",
+    "name": "Führungszeugnis beantragen (Requesting a certificate of good conduct)",
+    "description": "Request a certificate of good conduct (Führungszeugnis) — an official extract from the Federal Central Register showing whether you have a criminal record, often required by employers or authorities.",
+    "keywords": ["certificate of good conduct", "führungszeugnis", "criminal record certificate", "background check", "police clearance certificate"],
+    "eligibility": "Anyone registered (or habitually resident) in Berlin who is at least 14 years old. EU citizenship is only required for the separate 'European certificate of good conduct'.",
+    "requiredDocuments": [
+      "Completed application form (available online, in person, or by post)",
+      "For written/postal requests: signed application plus a copy of your ID (passport or national ID card)",
+      "For a certificate sent directly to an official body: that recipient agency's name, address, file reference, and the certificate's purpose",
+      "For an extended certificate: written authorization from the requesting organization",
+      "Proof of bank transfer for the fee, if applying by mail"
+    ],
+    "fees": "€13.00. Fee waivers exist in specific circumstances — check the official page for details.",
+    "processingTime": "About 2 weeks for a standard certificate; about 4 weeks for a European certificate.",
+    "bookingInfo": {
+      "office": "Bürgeramt (any district citizens' office)",
+      "url": "https://service.berlin.de/dienstleistung/120926/"
+    },
+    "sourceUrl": "https://service.berlin.de/dienstleistung/120926/"
+  },
+  {
+    "id": "kfz-neuzulassung",
+    "name": "Erstzulassung eines Fahrzeugs (First registration of a vehicle)",
+    "description": "Register a brand-new, never-before-registered vehicle for road use in Berlin and receive its registration certificates and license plates.",
+    "keywords": ["register car", "vehicle registration", "new car registration", "kfz zulassung", "erstzulassung", "license plate"],
+    "eligibility": "Individuals with their primary residence registered in Berlin, or businesses/associations with their registered seat or a branch in Berlin, registering a factory-new vehicle that has never been registered before. A secondary residence in Berlin is not sufficient.",
+    "requiredDocuments": [
+      "Completed application form for vehicle first registration",
+      "Valid ID card or passport",
+      "Vehicle Registration Certificate Part II (Fahrzeugbrief) or an equivalent operating permit",
+      "EC Certificate of Conformity (COC)",
+      "Valid motor insurance confirmation with an eVB number",
+      "SEPA direct debit authorization for vehicle tax",
+      "For businesses: commercial register extract, business registration, and IDs of managers",
+      "For associations: association register extract and IDs of the leadership",
+      "For minors: parental consent"
+    ],
+    "fees": "From €22.22 for an online application, or at least €30.60 for an in-person application; license plate production is billed separately.",
+    "processingTime": "Not stated exactly on the page; registration documents are sent by post a few days after registration.",
+    "bookingInfo": {
+      "office": "Kfz-Zulassungsbehörde Friedrichshain-Kreuzberg or Lichtenberg",
+      "url": "https://service.berlin.de/dienstleistung/120882/"
+    },
+    "sourceUrl": "https://service.berlin.de/dienstleistung/120882/"
+  },
+  {
+    "id": "kfz-ummeldung-nach-umzug",
+    "name": "Kraftfahrzeug ummelden — nach einem Umzug nach Berlin (Re-registering a vehicle after moving to Berlin)",
+    "description": "Re-register a vehicle you already own after moving your primary residence to Berlin, updating its registration certificate to your new Berlin address.",
+    "keywords": ["re-register car", "vehicle re-registration", "kfz ummeldung", "moved to berlin car", "change car registration address"],
+    "eligibility": "Vehicle owners/keepers who have moved their primary residence to Berlin and whose vehicle is already registered in Germany. A secondary residence in Berlin is not sufficient. Businesses/associations qualify if they have a seat or branch in Berlin.",
+    "requiredDocuments": [
+      "Application for re-registration without change of keeper",
+      "Valid ID card or passport",
+      "Current Vehicle Registration Certificate Part I",
+      "Vehicle Registration Certificate Part II, only if requesting a new Berlin license plate",
+      "Current emissions/safety inspection report (HU-Prüfbericht)",
+      "SEPA direct debit mandate, unless you're keeping your current plate",
+      "Old license plates, if applicable",
+      "For businesses: business registration and commercial register extract"
+    ],
+    "fees": "€17.50 basic fee, plus additional charges depending on the specifics (e.g. a new license plate).",
+    "processingTime": "Not stated exactly on the page; the office notes new appointment slots are released daily depending on capacity.",
+    "bookingInfo": {
+      "office": "Kfz-Zulassungsbehörde Friedrichshain-Kreuzberg or Lichtenberg",
+      "url": "https://service.berlin.de/dienstleistung/120918/"
+    },
+    "sourceUrl": "https://service.berlin.de/dienstleistung/120918/"
+  },
+  {
+    "id": "fahrerlaubnis-ersterteilung",
+    "name": "Fahrerlaubnis — Ersterteilung beantragen (Applying for a first driving license)",
+    "description": "Apply for a first driving license (Fahrerlaubnis) in Berlin, covering vehicle classes from mopeds to trucks and buses.",
+    "keywords": ["driving license", "first driving license", "learner driver", "fahrerlaubnis", "driver's license application", "get a driving license"],
+    "eligibility": "Applicants with their principal residence in Berlin (exceptions possible with approval from the home-residence authority) who meet the minimum age for the license class they're applying for; personal appearance is required. Applications can be submitted up to 6 months before reaching the minimum age.",
+    "requiredDocuments": [
+      "ID card or passport",
+      "One current biometric passport photo on paper (none printed on-site)",
+      "Name and address of your driving school and chosen testing center",
+      "First aid training certificate (exemptions for medical professionals and healthcare workers)",
+      "Vision test certificate, no older than 2 years (classes AM, A1, A2, A, B, BE, L, T)",
+      "Medical vision examination, no older than 2 years (classes C, C1, CE, C1E, D, D1, DE, D1E)",
+      "Certificate of physical and mental fitness, no older than 1 year (classes C, C1, CE, C1E, D, D1, DE, D1E)",
+      "Functional and performance test, no older than 1 year (classes D, D1, DE, D1E)",
+      "Certificate of good conduct (Führungszeugnis), for classes D, D1, DE, D1E — must be requested separately at a citizen office",
+      "Proof of professional qualification, if applying for the FQN alongside classes C or D"
+    ],
+    "fees": "€45.90 standard, or €45.10 for classes AM or L only; €6.32 extra for delivery by registered mail. The FQN certificate costs €35.00 including domestic delivery.",
+    "processingTime": "Not stated on the page — check directly with the licensing authority.",
+    "bookingInfo": {
+      "office": "Bürgeramt (any district citizens' office) or the Berlin-wide driving license booking system",
+      "url": "https://service.berlin.de/dienstleistung/121627/"
+    },
+    "sourceUrl": "https://service.berlin.de/dienstleistung/121627/"
+  },
+  {
+    "id": "fuehrerschein-umschreibung-eu-ewr",
+    "name": "Umschreibung einer ausländischen Fahrerlaubnis aus einem EU-/EWR-Staat (Converting an EU/EEA driving license)",
+    "description": "Convert a driving license issued by another EU or EEA (EWR) country into a German driving license.",
+    "keywords": ["driving license", "führerschein", "convert license", "foreign license", "eu driving license", "convert eu driving license", "driving license conversion"],
+    "eligibility": "Holders of a valid (or recently expired) driving license issued by an EU or EWR member state, with their main residence in Berlin. If Berlin is only a secondary residence, a justified exception must be approved by the main-residence authority. Personal appearance is required.",
+    "requiredDocuments": [
+      "ID card or passport",
+      "One current biometric passport photo on paper (bring your own — none printed on-site)",
+      "Your original EU/EWR driving license (valid or expired)",
+      "If the license was lost or stolen: detailed particulars, any available copies, or confirmation from the issuing country",
+      "For truck/bus classes (C/D): medical fitness certificate, vision examination, a functional performance test (class D only), a certificate of good conduct (class D), and proof of professional qualification where applicable"
+    ],
+    "fees": "€37.50.",
+    "processingTime": "Not stated on the page; check current processing status (Bearbeitungsstände) with the licensing authority.",
+    "bookingInfo": {
+      "office": "Bürgeramt (any district citizens' office) or Landesamt für Bürger- und Ordnungsangelegenheiten (LABO), Puttkamerstr. 16-18",
+      "url": "https://service.berlin.de/dienstleistung/121598/"
+    },
+    "sourceUrl": "https://service.berlin.de/dienstleistung/121598/"
+  },
+  {
+    "id": "fuehrerschein-umschreibung-drittstaat",
+    "name": "Umschreibung einer ausländischen Fahrerlaubnis aus einem Nicht-EU/EWR-Land (Converting a non-EU/EEA driving license)",
+    "description": "Convert a driving license issued by a country outside the EU/EEA (a 'third country') into a German driving license.",
+    "keywords": ["driving license", "führerschein", "convert license", "foreign license", "non-eu driving license", "convert foreign driving license", "driving license conversion", "third country driving license"],
+    "eligibility": "Holders of a valid, original national (not international) driving license issued by a country outside the EU/EWR, with their main residence in Berlin. Personal appearance is required, and non-EU/EWR citizens must also present a residence permit.",
+    "requiredDocuments": [
+      "ID card or passport",
+      "Residence permit, if you are not an EU/EWR citizen",
+      "One current biometric passport photo on paper",
+      "Name and address of your driving school and chosen testing center",
+      "Your original national (not international) foreign driving license, still valid",
+      "Certified translation, if the license isn't in German or English",
+      "First aid training certificate (third-country license holders only)",
+      "Vision test, for car/motorcycle classes A and B",
+      "Medical/psychological examination, for certain truck/bus license classes"
+    ],
+    "fees": "€37.50 for a conversion without an exam, or €45.10 if an exam is required.",
+    "processingTime": "Not stated on the page — check with the licensing authority for current processing times.",
+    "bookingInfo": {
+      "office": "Bürgeramt (any district citizens' office) or Landesamt für Bürger- und Ordnungsangelegenheiten (LABO), Puttkamerstr. 16-18",
+      "url": "https://service.berlin.de/dienstleistung/327537/"
+    },
+    "sourceUrl": "https://service.berlin.de/dienstleistung/327537/"
+  },
+  {
+    "id": "gewerbe-anmelden",
+    "name": "Gewerbe anmelden (Registering a business)",
+    "description": "Register a new self-employed commercial business (Gewerbe) with a fixed place of operation in Berlin.",
+    "keywords": ["register business", "gewerbe anmelden", "start a business", "business registration", "self employed", "freelance registration"],
+    "eligibility": "Natural persons operating as sole traders, partners in a partnership (OHG, GbR, KG), or legal entities (GmbH, AG, UG) starting a commercial business with a fixed place of operation in Berlin. Does not cover free professions (Freiberufler), agriculture, or other activities exempted under §6 GewO.",
+    "requiredDocuments": [
+      "Completed business registration form (online or as a PDF)",
+      "Valid government-issued photo ID or passport",
+      "Residence permit, if you are not an EU citizen",
+      "Current commercial register extract, for already-established companies",
+      "Articles of association and shareholder consent, for newly forming legal entities",
+      "Representative authorization form, if a legal entity has multiple authorized representatives"
+    ],
+    "fees": "€26.00 per sole proprietor or per partner in a partnership; €31.00 for a legal entity with one authorized representative (plus €13.00 per additional representative); €15.00 for online submission.",
+    "processingTime": "Not stated on the page.",
+    "bookingInfo": {
+      "office": "Ordnungsamt (district order office responsible for the business location)",
+      "url": "https://service.berlin.de/dienstleistung/121921/"
+    },
+    "sourceUrl": "https://service.berlin.de/dienstleistung/121921/"
+  },
+  {
+    "id": "eheschliessung-anmelden",
+    "name": "Eheschließung anmelden (Registering to get married)",
+    "description": "Register your intent to marry at a Berlin registry office (Standesamt) so you can hold the wedding ceremony within the following 6 months. Covers couples where both partners are German citizens born in Germany, without foreign-nationality involvement.",
+    "keywords": ["marriage", "get married", "eheschließung", "wedding registration", "register marriage", "standesamt"],
+    "eligibility": "Couples where both partners are German citizens by birth, born in Germany, with no foreign-nationality involvement in the marriage.",
+    "requiredDocuments": [
+      "Valid, signed passport or ID card for both partners",
+      "Extended registration certificate (erweiterte Meldebescheinigung) showing marital status, no older than 14 days, if your main residence is outside Berlin",
+      "Certified extract from the birth register with annotations (not a birth certificate), no older than 6 months",
+      "If previously married or in a civil partnership: certified marriage/partnership register extract showing dissolution, or the certificate plus the final divorce/dissolution decree (or death certificate if widowed)",
+      "Birth certificates of any children you share",
+      "Paternity acknowledgment and custody declarations, if applicable",
+      "Certified German translations of any foreign-language documents, plus apostille/legalization where required"
+    ],
+    "fees": "€45.00 for registration and examination of the marriage prerequisites; €40.00 extra to marry at a different registry office; €80.00 outside business hours; €75.00–€150.00 outside official premises. A German marriage certificate costs €12.00 (additional simultaneous copies €6.00 each).",
+    "processingTime": "Not stated on the page. Registration is valid for 6 months, during which the marriage must take place.",
+    "bookingInfo": {
+      "office": "Standesamt (district registry office where either partner resides)",
+      "url": "https://service.berlin.de/dienstleistung/318961/"
+    },
+    "sourceUrl": "https://service.berlin.de/dienstleistung/318961/"
+  },
+  {
+    "id": "geburt-melden",
+    "name": "Geburt eines Kindes melden (Registering the birth of a child)",
+    "description": "Register the birth of a child born in Berlin with the registry office (Standesamt) responsible for the birth district, so a birth certificate can be issued.",
+    "keywords": ["birth registration", "register birth", "geburt melden", "newborn", "birth certificate"],
+    "eligibility": "Applies to any birth that takes place in Berlin, regardless of where the parents live; the responsible registry office is determined by the district where the birth occurred.",
+    "requiredDocuments": [
+      "Birth notification from the hospital/birthing center, or a birth certificate for home births",
+      "Valid ID (passport or national ID card) for both parents",
+      "Mother's birth certificate",
+      "Father's birth certificate, if applicable",
+      "Marriage certificate, if the parents are married",
+      "Paternity acknowledgment and custody declaration, if the parents are not married",
+      "Divorce or death documentation, if the mother was previously married",
+      "Signed name declaration form from both parents",
+      "Certified translation and apostille/legalization for any foreign documents"
+    ],
+    "fees": "Registering the birth itself is free. A birth certificate, certified registry extract, or international birth certificate each cost €12.00 (additional copies issued at the same time cost €6.00 each).",
+    "processingTime": "Not stated on the page. For home births, registration must happen within one week.",
+    "bookingInfo": {
+      "office": "Standesamt (district registry office in the district where the birth occurred)",
+      "url": "https://service.berlin.de/dienstleistung/318957/"
+    },
+    "sourceUrl": "https://service.berlin.de/dienstleistung/318957/"
+  },
+  {
+    "id": "einbuergerung",
+    "name": "Einbürgerung — Verleihung der deutschen Staatsangehörigkeit beantragen (Applying for German citizenship)",
+    "description": "Apply for German citizenship by naturalization (Einbürgerung) after meeting Berlin residency, language, and other legal requirements.",
+    "keywords": ["citizenship", "naturalization", "einbürgerung", "german citizenship", "become german citizen", "apply for citizenship"],
+    "eligibility": "Foreign residents of Berlin with uninterrupted lawful residence in Germany for at least 5 years (3 years if married to a German citizen), holding an appropriate residence permit, who commit to the German constitution, are not dependent on Bürgergeld/Sozialhilfe (with some employment-related exceptions), have no significant criminal record, have German language skills at B1 level, can show knowledge of the German constitutional and social order (e.g. via the 'Leben in Deutschland' test), and have health and long-term care insurance.",
+    "requiredDocuments": [
+      "Valid passport or ID card",
+      "Vital records: marriage/divorce certificates, adoption decrees, if applicable",
+      "Employment or income documentation",
+      "Language certificate proving at least B1-level German",
+      "Test certificate for 'Leben in Deutschland' or another accepted citizenship test",
+      "Registration confirmation (Meldebestätigung)",
+      "Proof of health and long-term care insurance",
+      "Rental contract or proof of property ownership",
+      "Parental consent form, for children under 16 with shared custody"
+    ],
+    "fees": "€255.00 per adult applicant; €51.00 for a child under 16 applying together with a parent. Additional costs may apply if release from a previous nationality is required.",
+    "processingTime": "The office noted around 40,000 pending cases as of January 2024, leading to extended processing times.",
+    "bookingInfo": {
+      "office": "Landesamt für Einwanderung (LEA), Sellerstr. 16, 13353 Berlin",
+      "url": "https://service.berlin.de/dienstleistung/318998/"
+    },
+    "sourceUrl": "https://service.berlin.de/dienstleistung/318998/"
   }
 ]
