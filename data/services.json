@@ -1,0 +1,24 @@
+[
+  {
+    "id": "anmeldung",
+    "name": "Anmeldung (Registering your address)",
+    "description": "Register your address with the district citizens' office (Bürgeramt) after moving into a new home in Berlin. Required by German law within 14 days of moving in.",
+    "keywords": [
+      "move", "moving", "moved to berlin", "new address", "register address",
+      "residence registration", "wohnsitz", "ummeldung", "anmeldung"
+    ],
+    "eligibility": "Anyone moving into a new home in Berlin — new residents and people relocating within Berlin — must register within 14 days of moving in.",
+    "requiredDocuments": [
+      "Valid ID card or passport",
+      "Completed 'Anmeldung einer Wohnung' registration form",
+      "Wohnungsgeberbestätigung — a written confirmation from your landlord or property owner that you moved in, legally required since 2015"
+    ],
+    "fees": "Free of charge.",
+    "processingTime": "Done on the spot at your appointment; you receive a registration confirmation (Meldebescheinigung) immediately.",
+    "bookingInfo": {
+      "office": "Bürgeramt (any district citizens' office)",
+      "url": "https://service.berlin.de/dienstleistung/120697/"
+    },
+    "sourceUrl": "https://service.berlin.de/dienstleistung/120697/"
+  }
+]
