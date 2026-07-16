@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Berlin Services Assistant
 
-## Getting Started
+An unofficial chatbot that helps you find and get ready for Berlin city services. This tool searches a curated set of ~13 common services (e.g. registration, passport renewal, vehicle registration) using Claude AI, asks clarifying questions when needed, and provides checklists of required documents, fees, processing times, and booking links.
 
-First, run the development server:
+**⚠️ Disclaimer:** This is an independent, unofficial project not affiliated with the City of Berlin or [berlin.de](https://service.berlin.de/dienstleistungen/). Always verify details on the official berlin.de site before your appointment.
+
+## Local Development
 
 ```bash
+# Install dependencies
+npm install
+
+# Set up environment
+cp .env.local.example .env.local
+# Edit .env.local and add a real ANTHROPIC_API_KEY
+
+# Start the dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit http://localhost:3000 to try it out.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Testing
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm test
+```
 
-## Learn More
+## Important Note on Deployment
 
-To learn more about Next.js, take a look at the following resources:
+The `/api/chat` endpoint currently has no built-in authentication or rate-limiting. Before deploying publicly, please add one of the following:
+- Vercel deployment protection (Vercel-specific)
+- Custom rate-limiting and authentication middleware
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This prevents misuse and unexpected API costs.
