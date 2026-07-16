@@ -9,7 +9,7 @@ export interface ServiceSearchResult {
 
 const fuse = new Fuse(services, {
   keys: ['name', 'description', 'keywords'],
-  threshold: 0.6,
+  threshold: 0.4,
   ignoreLocation: true,
 });
 
