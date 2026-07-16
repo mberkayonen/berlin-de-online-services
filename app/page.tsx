@@ -28,7 +28,11 @@ export default function Chat() {
 
       <div className="flex flex-col gap-3">
         {messages.map(message => (
-          <Message key={message.id} message={message} />
+          <Message
+            key={message.id}
+            message={message}
+            onSelectService={serviceName => sendMessage({ text: `Tell me more about: ${serviceName}` })}
+          />
         ))}
       </div>
 
