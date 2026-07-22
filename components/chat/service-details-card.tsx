@@ -26,55 +26,67 @@ export function ServiceDetailsCard({ invocation }: { invocation: Invocation }) {
   }
 
   return (
-    <Card className="p-4 flex flex-col gap-3">
-      <div>
-        <div className="font-semibold">{service.name}</div>
-        <Badge variant="secondary" className="mt-1">
-          {service.bookingInfo.office}
-        </Badge>
+    <Card className="overflow-hidden p-0">
+      <div className="flex items-center justify-between bg-secondary px-4 py-3">
+        <div className="font-semibold text-secondary-foreground">{service.name}</div>
+        <Badge className="bg-primary text-primary-foreground">{service.bookingInfo.office}</Badge>
       </div>
 
-      <Separator />
-
-      <div>
-        <div className="text-sm font-medium mb-1">Eligibility</div>
-        <p className="text-sm text-muted-foreground">{service.eligibility}</p>
-      </div>
-
-      <div>
-        <div className="text-sm font-medium mb-1">Documents to bring</div>
-        <ul className="list-disc list-inside text-sm text-muted-foreground">
-          {service.requiredDocuments.map((doc, i) => (
-            <li key={i}>{doc}</li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="flex gap-6">
+      <div className="flex flex-col gap-3 p-4">
         <div>
-          <div className="text-sm font-medium mb-1">Fees</div>
-          <p className="text-sm text-muted-foreground">{service.fees}</p>
+          <div className="text-sm font-medium mb-1">Eligibility</div>
+          <p className="text-sm text-muted-foreground">{service.eligibility}</p>
         </div>
+
         <div>
-          <div className="text-sm font-medium mb-1">Processing time</div>
-          <p className="text-sm text-muted-foreground">{service.processingTime}</p>
+          <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-2">
+            Bring with you
+          </div>
+          <div className="flex flex-col gap-1.5">
+            {service.requiredDocuments.map((doc, i) => (
+              <div key={i} className="flex gap-2 text-sm text-foreground">
+                <span className="text-primary">✓</span>
+                {doc}
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
 
-      <Separator />
+        <div className="flex gap-6">
+          <div>
+            <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              Fees
+            </div>
+            <div className="text-sm text-foreground">{service.fees}</div>
+          </div>
+          <div>
+            <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              Processing
+            </div>
+            <div className="text-sm text-foreground">{service.processingTime}</div>
+          </div>
+        </div>
 
-      <div className="flex gap-4 text-sm">
-        <a
-          href={service.bookingInfo.url}
-          target="_blank"
-          rel="noreferrer"
-          className="underline"
-        >
-          Book an appointment
-        </a>
-        <a href={service.sourceUrl} target="_blank" rel="noreferrer" className="underline">
-          View official page
-        </a>
+        <Separator />
+
+        <div className="flex gap-4 text-sm">
+          <a
+            href={service.bookingInfo.url}
+            target="_blank"
+            rel="noreferrer"
+            className="text-primary underline"
+          >
+            Book an appointment
+          </a>
+          <a
+            href={service.sourceUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="text-primary underline"
+          >
+            View official page
+          </a>
+        </div>
       </div>
     </Card>
   );
