@@ -6,6 +6,7 @@ import { DefaultChatTransport } from 'ai';
 import type { BerlinServicesUIMessage } from '@/lib/agents/berlin-services-agent';
 import { Message } from '@/components/chat/message';
 import { Disclaimer } from '@/components/chat/disclaimer';
+import { PromptChips } from '@/components/chat/prompt-chips';
 import { Button } from '@/components/ui/button';
 
 export default function Chat() {
@@ -23,8 +24,15 @@ export default function Chat() {
 
   return (
     <div className="flex flex-col w-full max-w-2xl py-12 mx-auto gap-4 px-4">
-      <h1 className="text-xl font-semibold">Berlin Services Assistant (unofficial)</h1>
+      <h1 className="flex items-center gap-2 text-xl font-semibold">
+        <span className="inline-block h-2 w-2 rounded-full bg-destructive" />
+        Berlin Services Assistant (unofficial)
+      </h1>
       <Disclaimer />
+
+      {messages.length === 0 && (
+        <PromptChips onSelect={prompt => sendMessage({ text: prompt })} />
+      )}
 
       <div className="flex flex-col gap-3">
         {messages.map(message => (
