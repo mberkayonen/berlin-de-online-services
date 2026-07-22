@@ -42,14 +42,14 @@ export function ServiceDetailsCard({ invocation }: { invocation: Invocation }) {
           <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-2">
             Bring with you
           </div>
-          <div className="flex flex-col gap-1.5">
+          <ul className="flex flex-col gap-1.5 list-none">
             {service.requiredDocuments.map((doc, i) => (
-              <div key={i} className="flex gap-2 text-sm text-foreground">
-                <span className="text-primary">✓</span>
+              <li key={i} className="flex gap-2 text-sm text-foreground">
+                <span className="text-primary" aria-hidden="true">✓</span>
                 {doc}
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
 
         <div className="flex gap-6">

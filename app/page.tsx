@@ -25,7 +25,7 @@ export default function Chat() {
   return (
     <div className="flex flex-col w-full max-w-2xl py-12 mx-auto gap-4 px-4">
       <h1 className="flex items-center gap-2 text-xl font-semibold">
-        <span className="inline-block h-2 w-2 rounded-full bg-destructive" />
+        <span className="inline-block h-2 w-2 rounded-full bg-destructive" aria-hidden="true" />
         Berlin Services Assistant (unofficial)
       </h1>
       <Disclaimer />
