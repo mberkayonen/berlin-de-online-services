@@ -40,3 +40,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# superpowers scratch (agent working files, brainstorm mockups)
+.superpowers/
