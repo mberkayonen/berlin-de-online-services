@@ -25,11 +25,3 @@ Visit http://localhost:3000 to try it out.
 ```bash
 npm test
 ```
-
-## Important Note on Deployment
-
-The `/api/chat` endpoint currently has no built-in authentication or rate-limiting. Before deploying publicly, please add one of the following:
-- Vercel deployment protection (Vercel-specific)
-- Custom rate-limiting and authentication middleware
-
-This prevents misuse and unexpected API costs.
