@@ -4,24 +4,4 @@ An unofficial chatbot that helps you find and get ready for Berlin city services
 
 **⚠️ Disclaimer:** This is an independent, unofficial project not affiliated with the City of Berlin or [berlin.de](https://service.berlin.de/dienstleistungen/). Always verify details on the official berlin.de site before your appointment.
 
-## Local Development
-
-```bash
-# Install dependencies
-npm install
-
-# Set up environment
-cp .env.local.example .env.local
-# Edit .env.local and add a real ANTHROPIC_API_KEY
-
-# Start the dev server
-npm run dev
-```
-
-Visit http://localhost:3000 to try it out.
-
-## Testing
-
-```bash
-npm test
-```
+**Live:** https://berlin-de-online-services.vercel.app
