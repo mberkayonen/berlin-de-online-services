@@ -1,0 +1,43 @@
+import { VoyageAIClient } from 'voyageai';
+
+const MAX_BATCH_SIZE = 128;
+const EMBEDDING_MODEL = 'voyage-4';
+
+let cachedClient: VoyageAIClient | undefined;
+
+function getClient(): VoyageAIClient {
+  if (!cachedClient) {
+    cachedClient = new VoyageAIClient({ apiKey: process.env.VOYAGE_API_KEY });
+  }
+  return cachedClient;
+}
+
+export function chunk<T>(items: T[], size: number): T[][] {
+  const chunks: T[][] = [];
+  for (let i = 0; i < items.length; i += size) {
+    chunks.push(items.slice(i, i + size));
+  }
+  return chunks;
+}
+
+export async function embedTexts(
+  texts: string[],
+  inputType: 'query' | 'document',
+): Promise<number[][]> {
+  if (texts.length === 0) return [];
+
+  const batches = chunk(texts, MAX_BATCH_SIZE);
+  const results: number[][] = [];
+
+  for (const batch of batches) {
+    const response = await getClient().embed({
+      input: batch,
+      model: EMBEDDING_MODEL,
+      inputType,
+    });
+    const embeddings = (response.data ?? []).map(item => item.embedding ?? []);
+    results.push(...embeddings);
+  }
+
+  return results;
+}
