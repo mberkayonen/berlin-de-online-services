@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "vitest run"
+    "test": "vitest run",
+    "scrape": "node --env-file=.env.local node_modules/.bin/tsx scripts/scrape-services.ts"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^4.0.14",
