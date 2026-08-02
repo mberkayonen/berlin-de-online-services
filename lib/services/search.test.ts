@@ -1,26 +1,36 @@
 import { describe, it, expect } from 'vitest';
-import { searchServices } from './search';
+import { rankByEmbedding } from './search';
 
-describe('searchServices', () => {
-  it('finds Anmeldung for a query about moving to Berlin', () => {
-    const results = searchServices('I just moved to Berlin, what do I need to do');
-    expect(results.some(r => r.id === 'anmeldung')).toBe(true);
+describe('rankByEmbedding', () => {
+  const candidates = [
+    { id: 'a', vector: [1, 0, 0] }, // identical to query -> similarity 1.0
+    { id: 'b', vector: [0.9, 0.1, 0] }, // close to query -> high similarity
+    { id: 'c', vector: [0, 1, 0] }, // orthogonal to query -> similarity 0.0
+    { id: 'd', vector: [-1, 0, 0] }, // opposite of query -> similarity -1.0
+  ];
+  const queryVector = [1, 0, 0];
+
+  it('ranks candidates by descending similarity', () => {
+    const ranked = rankByEmbedding(queryVector, candidates, -1, 10);
+    expect(ranked).toEqual(['a', 'b', 'c', 'd']);
   });
 
-  it('finds both driving license conversion services for a generic query', () => {
-    const results = searchServices('convert my foreign driving license');
-    const ids = results.map(r => r.id);
-    expect(ids).toContain('fuehrerschein-umschreibung-eu-ewr');
-    expect(ids).toContain('fuehrerschein-umschreibung-drittstaat');
+  it('filters out candidates below the minimum similarity threshold', () => {
+    const ranked = rankByEmbedding(queryVector, candidates, 0.5, 10);
+    expect(ranked).toEqual(['a', 'b']);
   });
 
-  it('returns an empty array for a nonsense query', () => {
-    const results = searchServices('zzz qqq nonexistent gibberish 12345');
-    expect(results).toEqual([]);
+  it('respects the maxResults limit', () => {
+    const ranked = rankByEmbedding(queryVector, candidates, -1, 2);
+    expect(ranked).toEqual(['a', 'b']);
   });
 
-  it('returns at most 5 results', () => {
-    const results = searchServices('a');
-    expect(results.length).toBeLessThanOrEqual(5);
+  it('returns an empty array when nothing meets the threshold', () => {
+    const ranked = rankByEmbedding(queryVector, candidates, 1.5, 10);
+    expect(ranked).toEqual([]);
+  });
+
+  it('returns an empty array for an empty candidate list', () => {
+    expect(rankByEmbedding(queryVector, [], -1, 10)).toEqual([]);
   });
 });

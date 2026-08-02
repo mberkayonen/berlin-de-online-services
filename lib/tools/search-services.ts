@@ -9,7 +9,7 @@ export const searchServicesTool = tool({
     query: z.string().describe("The user's need, described in a few words"),
   }),
   execute: async ({ query }) => {
-    const results = searchServices(query);
+    const results = await searchServices(query);
     return { results };
   },
 });
