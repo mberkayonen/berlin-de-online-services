@@ -44,7 +44,12 @@ export function parseDetailPage(html: string, sourceUrl: string): RawServiceFiel
   const bookingHeading = $('h2')
     .filter((_, el) => $(el).text().trim() === 'Termin buchen')
     .first();
-  const bookingHref = bookingHeading.nextUntil('h2').find('a.button').first().attr('href') ?? null;
+  const bookingPanel = bookingHeading.closest('.modul-servicepanel');
+  const bookingHref =
+    (bookingPanel.length > 0 ? bookingPanel : bookingHeading.nextUntil('h2'))
+      .find('a.button')
+      .first()
+      .attr('href') ?? null;
   const bookingUrl = bookingHref ? new URL(bookingHref, 'https://service.berlin.de').toString() : null;
 
   return {

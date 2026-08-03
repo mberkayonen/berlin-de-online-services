@@ -4,9 +4,15 @@ import { parseDetailPage } from './detail-parser';
 const fixtureHtml = `
 <html><body>
 <h1 class="title">Personalausweis beantragen</h1>
-<h2 class="title">Termin buchen</h2>
-<div>
-  <a class="button button--negative" href="/terminvereinbarung/termin/all/120703/">Berlinweite Terminbuchung</a>
+<div class="modul-servicepanel fullwidth panel--dark">
+    <div class="servicepanel__left">...</div>
+    <div class="servicepanel__main">
+        <h2 class="title">Termin buchen</h2>
+        <p>Sie können diese Dienstleistung auch berlinweit in Anspruch nehmen</p>
+    </div>
+    <div class="servicepanel__right">
+        <a class="button button--negative" href="/terminvereinbarung/termin/all/120703/">Berlinweite Terminbuchung</a>
+    </div>
 </div>
 <h2 class="title">Voraussetzungen</h2>
 <ul class="list-clean">
