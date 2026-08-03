@@ -6,6 +6,7 @@ import { computeContentHash, type IngestionState } from '../lib/pipeline/ingesti
 import { translateService } from '../lib/pipeline/translate';
 import { embedTexts } from '../lib/voyage/client';
 import { servicesSchema, type Service } from '../lib/services/schema';
+import { withRetry } from '../lib/pipeline/with-retry';
 
 const LISTING_URL = 'https://service.berlin.de/dienstleistungen/';
 const DATA_DIR = path.join(process.cwd(), 'data');
@@ -14,11 +15,22 @@ const EMBEDDINGS_PATH = path.join(DATA_DIR, 'embeddings.json');
 const STATE_PATH = path.join(DATA_DIR, 'ingestion-state.json');
 
 async function fetchText(url: string): Promise<string> {
-  const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' } });
-  if (!res.ok) {
-    throw new Error(`Failed to fetch ${url}: ${res.status}`);
-  }
-  return res.text();
+  return withRetry(
+    async () => {
+      const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' } });
+      if (!res.ok) {
+        throw new Error(`Failed to fetch ${url}: ${res.status}`);
+      }
+      return res.text();
+    },
+    {
+      onRetry: (attempt, error) => {
+        console.log(
+          `Retry ${attempt}/3 for fetchText(${url}): ${error instanceof Error ? error.message : String(error)}`,
+        );
+      },
+    },
+  );
 }
 
 async function loadJson<T>(filePath: string, fallback: T): Promise<T> {
@@ -77,7 +89,13 @@ async function main() {
 
     if (!isUnchanged) {
       console.log(`Translating ${entry.id} (${raw.name})...`);
-      const translated = await translateService(raw);
+      const translated = await withRetry(() => translateService(raw), {
+        onRetry: (attempt, error) => {
+          console.log(
+            `Retry ${attempt}/3 for translateService(${entry.id}): ${error instanceof Error ? error.message : String(error)}`,
+          );
+        },
+      });
 
       const service: Service = {
         id: entry.id,
@@ -95,9 +113,19 @@ async function main() {
         sourceUrl: raw.sourceUrl,
       };
 
-      const [vector] = await embedTexts(
-        [[service.name, service.description, ...service.keywords].join('. ')],
-        'document',
+      const [vector] = await withRetry(
+        () =>
+          embedTexts(
+            [[service.name, service.description, ...service.keywords].join('. ')],
+            'document',
+          ),
+        {
+          onRetry: (attempt, error) => {
+            console.log(
+              `Retry ${attempt}/3 for embedTexts(${entry.id}): ${error instanceof Error ? error.message : String(error)}`,
+            );
+          },
+        },
       );
 
       servicesById.set(entry.id, service);
