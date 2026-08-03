@@ -35,8 +35,14 @@ export async function embedTexts(
       model: EMBEDDING_MODEL,
       inputType,
     });
-    const embeddings = (response.data ?? []).map((item, i) => {
-      if (!item.embedding) {
+    const data = response.data ?? [];
+    if (data.length !== batch.length) {
+      throw new Error(
+        `Voyage API returned ${data.length} embeddings for a batch of ${batch.length} texts`,
+      );
+    }
+    const embeddings = data.map((item, i) => {
+      if (!item.embedding?.length) {
         throw new Error(`Missing embedding in Voyage API response for index ${i}`);
       }
       return item.embedding;

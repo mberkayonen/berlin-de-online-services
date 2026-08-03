@@ -54,4 +54,28 @@ describe('embedTexts', () => {
       'Missing embedding in Voyage API response for index 1',
     );
   });
+
+  it('throws instead of silently substituting an empty vector when an item has an empty embedding array', async () => {
+    embedMock.mockResolvedValueOnce({
+      data: [{ embedding: [0.1, 0.2] }, { embedding: [] }],
+    });
+
+    const { embedTexts } = await import('./client');
+
+    await expect(embedTexts(['a', 'b'], 'document')).rejects.toThrow(
+      'Missing embedding in Voyage API response for index 1',
+    );
+  });
+
+  it('throws when the response has fewer items than the requested batch', async () => {
+    embedMock.mockResolvedValueOnce({
+      data: [{ embedding: [0.1, 0.2] }],
+    });
+
+    const { embedTexts } = await import('./client');
+
+    await expect(embedTexts(['a', 'b'], 'document')).rejects.toThrow(
+      'Voyage API returned 1 embeddings for a batch of 2 texts',
+    );
+  });
 });
