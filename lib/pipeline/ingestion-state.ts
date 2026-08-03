@@ -1,6 +1,7 @@
 import { createHash } from 'node:crypto';
-import { readFile, writeFile } from 'node:fs/promises';
+import { readFile } from 'node:fs/promises';
 import type { RawServiceFields } from './detail-parser';
+import { writeJsonAtomic } from './atomic-write';
 
 export interface IngestionStateEntry {
   contentHash: string;
@@ -27,5 +28,5 @@ export async function readIngestionState(filePath: string): Promise<IngestionSta
 }
 
 export async function writeIngestionState(filePath: string, state: IngestionState): Promise<void> {
-  await writeFile(filePath, JSON.stringify(state, null, 2) + '\n', 'utf-8');
+  await writeJsonAtomic(filePath, state);
 }

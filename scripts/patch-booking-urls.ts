@@ -17,11 +17,12 @@
  * a no-op (aside from the wasted HTTP request), so if this crashes partway
  * through, just run it again.
  */
-import { readFile, writeFile } from 'node:fs/promises';
+import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { parseDetailPage } from '../lib/pipeline/detail-parser';
 import { fetchText } from '../lib/pipeline/fetch-text';
 import { servicesSchema, type Service } from '../lib/services/schema';
+import { writeJsonAtomic } from '../lib/pipeline/atomic-write';
 
 const DATA_DIR = path.join(process.cwd(), 'data');
 const SERVICES_PATH = path.join(DATA_DIR, 'services.json');
@@ -34,7 +35,7 @@ async function loadServices(): Promise<Service[]> {
 
 async function persist(services: Service[]): Promise<void> {
   const validated = servicesSchema.parse(services);
-  await writeFile(SERVICES_PATH, JSON.stringify(validated, null, 2) + '\n', 'utf-8');
+  await writeJsonAtomic(SERVICES_PATH, validated);
 }
 
 async function main() {

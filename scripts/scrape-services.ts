@@ -1,8 +1,14 @@
-import { readFile, writeFile } from 'node:fs/promises';
+import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { parseListingPage } from '../lib/pipeline/listing-parser';
 import { parseDetailPage } from '../lib/pipeline/detail-parser';
-import { computeContentHash, type IngestionState } from '../lib/pipeline/ingestion-state';
+import {
+  computeContentHash,
+  readIngestionState,
+  writeIngestionState,
+  type IngestionState,
+} from '../lib/pipeline/ingestion-state';
+import { writeJsonAtomic } from '../lib/pipeline/atomic-write';
 import { translateService } from '../lib/pipeline/translate';
 import { embedTexts } from '../lib/voyage/client';
 import { servicesSchema, type Service } from '../lib/services/schema';
@@ -38,7 +44,7 @@ async function main() {
     `Found ${fullListing.length} services on the listing page (processing ${targetListing.length}${isDryRun ? ', dry run' : ''}).`,
   );
 
-  const previousState = await loadJson<IngestionState>(STATE_PATH, {});
+  const previousState = await readIngestionState(STATE_PATH);
   const existingServices = await loadJson<Service[]>(SERVICES_PATH, []);
   const existingEmbeddings = await loadJson<Record<string, number[]>>(EMBEDDINGS_PATH, {});
 
@@ -48,9 +54,9 @@ async function main() {
 
   async function persist() {
     const validated = servicesSchema.parse(Array.from(servicesById.values()));
-    await writeFile(SERVICES_PATH, JSON.stringify(validated, null, 2) + '\n', 'utf-8');
-    await writeFile(EMBEDDINGS_PATH, JSON.stringify(embeddingsById, null, 2) + '\n', 'utf-8');
-    await writeFile(STATE_PATH, JSON.stringify(stateById, null, 2) + '\n', 'utf-8');
+    await writeJsonAtomic(SERVICES_PATH, validated);
+    await writeJsonAtomic(EMBEDDINGS_PATH, embeddingsById);
+    await writeIngestionState(STATE_PATH, stateById);
   }
 
   let unchangedCount = 0;
