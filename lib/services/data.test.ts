@@ -6,6 +6,13 @@ describe('services data', () => {
     expect(services.length).toBeGreaterThan(0);
   });
 
+  it('loads the full ingested catalog, not a truncated subset', () => {
+    // The real ingestion pipeline has scraped 1,140 services from
+    // service.berlin.de. This guards against data/services.json being
+    // accidentally truncated back down to a placeholder/curated subset.
+    expect(services.length).toBeGreaterThan(1000);
+  });
+
   it('returns undefined for an unknown id', () => {
     expect(getServiceById('does-not-exist')).toBeUndefined();
   });

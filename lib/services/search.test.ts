@@ -1,5 +1,9 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi, afterEach } from 'vitest';
 import { rankByEmbedding } from './search';
+
+vi.mock('@/lib/voyage/client', () => ({
+  embedTexts: vi.fn(),
+}));
 
 describe('rankByEmbedding', () => {
   const candidates = [
@@ -32,5 +36,23 @@ describe('rankByEmbedding', () => {
 
   it('returns an empty array for an empty candidate list', () => {
     expect(rankByEmbedding(queryVector, [], -1, 10)).toEqual([]);
+  });
+});
+
+describe('searchServices', () => {
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it('returns an empty array instead of throwing when embedding the query fails', async () => {
+    const { embedTexts } = await import('@/lib/voyage/client');
+    vi.mocked(embedTexts).mockRejectedValueOnce(new Error('Voyage API outage'));
+    const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+
+    const { searchServices } = await import('./search');
+    const results = await searchServices('renew my passport');
+
+    expect(results).toEqual([]);
+    expect(consoleErrorSpy).toHaveBeenCalled();
   });
 });

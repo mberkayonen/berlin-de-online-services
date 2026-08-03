@@ -32,10 +32,18 @@ export function rankByEmbedding(
 }
 
 const servicesById = new Map(services.map(s => [s.id, s]));
+const allEmbeddings = getAllEmbeddings();
 
 export async function searchServices(query: string): Promise<ServiceSearchResult[]> {
-  const [queryVector] = await embedTexts([query], 'query');
-  const rankedIds = rankByEmbedding(queryVector, getAllEmbeddings());
+  let queryVector: number[];
+  try {
+    [queryVector] = await embedTexts([query], 'query');
+  } catch (err) {
+    console.error('searchServices: embedding query failed, returning no results', err);
+    return [];
+  }
+
+  const rankedIds = rankByEmbedding(queryVector, allEmbeddings);
 
   return rankedIds
     .map(id => servicesById.get(id))

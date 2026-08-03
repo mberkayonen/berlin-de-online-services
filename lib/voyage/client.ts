@@ -35,7 +35,12 @@ export async function embedTexts(
       model: EMBEDDING_MODEL,
       inputType,
     });
-    const embeddings = (response.data ?? []).map(item => item.embedding ?? []);
+    const embeddings = (response.data ?? []).map((item, i) => {
+      if (!item.embedding) {
+        throw new Error(`Missing embedding in Voyage API response for index ${i}`);
+      }
+      return item.embedding;
+    });
     results.push(...embeddings);
   }
 
