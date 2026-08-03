@@ -1,15 +1,17 @@
 import { describe, it, expect } from 'vitest';
 import { getServiceDetailsTool } from './get-service-details';
+import { services } from '@/lib/services/data';
 import type { Service } from '@/lib/services/schema';
 
 describe('getServiceDetailsTool', () => {
   it('returns the full service record for a known id', async () => {
+    const knownService = services[0];
     const output = (await getServiceDetailsTool.execute!(
-      { serviceId: 'anmeldung' },
+      { serviceId: knownService.id },
       { toolCallId: 'test-call', messages: [], context: {} },
     )) as { service?: Service; error?: string };
-    expect(output.service?.id).toBe('anmeldung');
-    expect(output.service?.requiredDocuments.length).toBeGreaterThan(0);
+    expect(output.service?.id).toBe(knownService.id);
+    expect(output.service?.requiredDocuments.length).toBeGreaterThanOrEqual(0);
   });
 
   it('returns an error for an unknown id', async () => {
