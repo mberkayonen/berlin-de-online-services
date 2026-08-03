@@ -7,31 +7,13 @@ import { translateService } from '../lib/pipeline/translate';
 import { embedTexts } from '../lib/voyage/client';
 import { servicesSchema, type Service } from '../lib/services/schema';
 import { withRetry } from '../lib/pipeline/with-retry';
+import { fetchText } from '../lib/pipeline/fetch-text';
 
 const LISTING_URL = 'https://service.berlin.de/dienstleistungen/';
 const DATA_DIR = path.join(process.cwd(), 'data');
 const SERVICES_PATH = path.join(DATA_DIR, 'services.json');
 const EMBEDDINGS_PATH = path.join(DATA_DIR, 'embeddings.json');
 const STATE_PATH = path.join(DATA_DIR, 'ingestion-state.json');
-
-async function fetchText(url: string): Promise<string> {
-  return withRetry(
-    async () => {
-      const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' } });
-      if (!res.ok) {
-        throw new Error(`Failed to fetch ${url}: ${res.status}`);
-      }
-      return res.text();
-    },
-    {
-      onRetry: (attempt, error) => {
-        console.log(
-          `Retry ${attempt}/3 for fetchText(${url}): ${error instanceof Error ? error.message : String(error)}`,
-        );
-      },
-    },
-  );
-}
 
 async function loadJson<T>(filePath: string, fallback: T): Promise<T> {
   try {

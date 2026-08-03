@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
-    "scrape": "node --env-file=.env.local node_modules/.bin/tsx scripts/scrape-services.ts"
+    "scrape": "node --env-file=.env.local node_modules/.bin/tsx scripts/scrape-services.ts",
+    "patch-booking-urls": "node_modules/.bin/tsx scripts/patch-booking-urls.ts"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^4.0.14",
